@@ -1,7 +1,7 @@
 package zombieWar;
 
 public class ZombieWar {
-	//Zombie Project - Zach Kasen, Gianna Bedford, Samuel Sabotka
+	//Zombie Project - Zach Kasen, Gianna Bedford, Samuel Sobotka
 
 
 
