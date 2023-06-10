@@ -34,14 +34,14 @@ public class Zombie {
 
 }
 
-// CommonInfected
+// CommonInfected with 30 HP, 5 AD
 class CommonInfected extends Zombie {
     public CommonInfected() {
         super(30, 5);
     }
 }
 
-// Tank
+// Tank with 150 HP, 20 AD
 class Tank extends Zombie {
     public Tank() {
         super(150, 20);

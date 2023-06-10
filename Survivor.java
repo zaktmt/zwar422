@@ -34,21 +34,21 @@ public class Survivor {
 
 }
 
-// Scientist
+// Scientist with 20 HP, 2 AD
 class Scientist extends Survivor {
     public Scientist() {
         super(20, 2);
     }
 }
 
-// Civilian
+// Civilian with 50 HP, 5 AD
 class Civilian extends Survivor {
     public Civilian() {
         super(50, 5);
     }
 }
 
-// Soldier
+// Soldier with 100 HP, 10 AD
 class Soldier extends Survivor {
     public Soldier() {
         super(100, 10);
