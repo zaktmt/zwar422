@@ -1,6 +1,7 @@
 package zombieWar;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.io.*;
 
 // Zombie Project - Zach Kasen, Gianna Bedford, Samuel Sobotka
 public class ZombieWar {
@@ -9,10 +10,12 @@ public class ZombieWar {
 		
 		int numSurvivors = (int) (Math.random() * 19 + 1);
 		int numZombies = (int) (Math.random() * 19 + 1);
-
 		ArrayList<Survivor> survivors = new ArrayList<>();
 		ArrayList<Zombie> zombies = new ArrayList<>();
+        double odds = (double) numSurvivors / (numSurvivors + numZombies);
+        double percent = 0;
 
+		
 		int numScientists = 1;
 		int numCivilians = 1;
 		int numSoldiers = 1;
@@ -54,6 +57,8 @@ public class ZombieWar {
 				zombies.size(), --numCommonInfected, --numTanks);
 
 		System.out.println();
+        System.out.printf("Odds of survivors winning: %.2f%%\n", odds * 100);
+
 
 		while (!survivors.isEmpty() && !zombies.isEmpty()) {
 
@@ -72,6 +77,7 @@ public class ZombieWar {
 				}
 
 			}
+		
 
 			for (Zombie zombie : zombies) {
 
@@ -95,11 +101,63 @@ public class ZombieWar {
 
 		if (survivors.isEmpty()) {
 			System.out.println("None of the survivors made it. :(");
+			System.out.println("The zombie(s) remaining are:");
+            for (Zombie zombie : zombies) {
+                System.out.println(zombie);
+            }
+            System.out.println("The zombies have taken over, all is lost");
 		} else {
 			System.out.printf("%d survivors have made it to safety!", survivors.size());
+			System.out.println("");
+			 System.out.println("The survivor(s) are:");
+	            for (Survivor survivor : survivors) {
+	                System.out.println(survivor);
+	            }
+	         System.out.println("Humanity lives to survive another day!");
+	         percent = survivors.size() / (double) numSurvivors;
+	            System.out.printf("Percent of survivors remaining: %.2f%%\n", percent * 100);
+	         
+	            
+
+
 		}
 		
-	}
+		   try (Scanner input = new Scanner(System.in)) {
+			System.out.println("Would you like to run the simulation again? (y/n)");
+	        String answer = input.nextLine();
+	        if (answer.equals("y")) {
+	            main(args);
+	        }
+	        else {
+	            System.out.println("Game over!");
+	            try {
+	                PrintWriter out = new PrintWriter("results.txt");
+	                out.println("Zombie War Results");
+	                out.println("The survivors that saved humanity:");
+	               
+	                
+	                for (Survivor survivor : survivors) {
+	                    out.println(survivor);
+	                }
+	                out.println("Zombies:");
+	                for (Zombie zombie : zombies) {
+	                    out.println(zombie);
+	                }
+	                out.println("Percentage of survivors remaining: "+ percent*100+ "%");
+	                System.out.println("Results saved...");
+	                out.close();
+	            } catch (FileNotFoundException e) {
+	                e.printStackTrace();
+	            }
+	         
+
+	        }
+		   }
+	
+	    }
+	
+	
+	 
 
 	private static void printDeathMessage(Survivor killer, Zombie victim) {
 
@@ -119,5 +177,7 @@ public class ZombieWar {
 		}
 
 	}
+	
 
 }
+
