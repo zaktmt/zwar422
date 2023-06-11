@@ -27,9 +27,18 @@ public class Zombie {
         return this.health <= 0;
     }
 
+    public void attack(Survivor survivor) {
+        survivor.setHealth(survivor.getHealth() - this.attackDamage);
+    }
+
     public Zombie(int health, int attackDamage) {
         this.health = health;
         this.attackDamage = attackDamage;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
     }
 
 }
