@@ -1,26 +1,17 @@
 package zombieWar;
 
 // Survivor class
-public class Survivor {
+public abstract class Survivor {
 
     private int health;
-    private int attackDamage;
-
+    private final int attackDamage;
 
     public int getHealth() {
         return health;
     }
 
-    public int getAttackDamage() {
-        return attackDamage;
-    }
-
     public void setHealth(int health) {
         this.health = health;
-    }
-
-    public void setAttackDamage(int attackDamage) {
-        this.attackDamage = attackDamage;
     }
 
     public boolean isDead() {
@@ -41,25 +32,54 @@ public class Survivor {
         return this.getClass().getSimpleName();
     }
 
+    public abstract String getName();
+
 }
 
 // Scientist with 20 HP, 2 AD
 class Scientist extends Survivor {
-    public Scientist() {
+
+    private final String name;
+
+    public Scientist(String name) {
         super(20, 2);
+        this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }
 
 // Civilian with 50 HP, 5 AD
 class Civilian extends Survivor {
-    public Civilian() {
+
+    private final String name;
+
+    public Civilian(String name) {
         super(50, 5);
+        this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }
 
 // Soldier with 100 HP, 10 AD
 class Soldier extends Survivor {
-    public Soldier() {
+
+    private final String name;
+
+    public Soldier(String name) {
         super(100, 10);
+        this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
+
 }
