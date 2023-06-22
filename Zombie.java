@@ -23,6 +23,10 @@ public abstract class Zombie {
         survivor.setHealth(survivor.getHealth() - this.attackDamage);
     }
 
+    public void attack(Zombie zombie, int damage) {
+        zombie.setHealth(zombie.getHealth() - damage);
+    }
+
     public Zombie(int health, int attackDamage) {
         this.health = health;
         this.attackDamage = attackDamage;
@@ -34,6 +38,10 @@ public abstract class Zombie {
     }
 
     public abstract String getName();
+
+    public int getAttackDamage() {
+        return attackDamage;
+    }
 
 }
 
